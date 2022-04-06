@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Button, Text, StyleSheet} from 'react-native';
 
 
-function ColorCounter({color, setColors}) {
+function ColorCounter({color, onDecrease, onIncrease}) {
     return (
         <View>
             <Text
@@ -10,17 +10,11 @@ function ColorCounter({color, setColors}) {
             >{color}</Text>
             <Button 
                 title={`Increase ${color}`}
-                onPress={() => setColors(prev => ({
-                    ...prev,
-                    [color]: prev[color]+10
-                }))}
+                onPress={() => onIncrease()}
             />
             <Button 
                 title={`Decrease ${color}`}
-                onPress={() => setColors(prev => ({
-                    ...prev,
-                    [color]: prev[color] > 0 ? prev[color]-10 : 0
-                }))}
+                onPress={() => onDecrease()}
             />
         </View>
     )
